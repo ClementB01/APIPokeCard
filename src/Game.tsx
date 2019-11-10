@@ -3,15 +3,15 @@ import Row, { RowProps } from "./Row";
 
 export type GameProps = {
   onClick: RowProps["onClick"];
-  rows: RowProps["owners"][];
+  game: RowProps["row"][];
 };
 
 const Game: React.FC<GameProps> = gameProps => {
   return (
     <table>
-      {gameProps.rows.map((row, index) => (
-        <Row owners={row} onClick={() => {}} />
-      ))}
+      {gameProps.game.map((row, index) => (
+        <Row row={row} onClick={() => {}} indexRow={index}/>
+        ))}
     </table>
   );
 };

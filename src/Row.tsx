@@ -3,14 +3,16 @@ import Cell, { CellProps } from "./Cell";
 
 export type RowProps = {
   onClick: CellProps["onClick"];
-  owners: CellProps["owner"][];
+  row: CellProps["cell"][];
+  indexRow: number
 };
 
 const Row: React.FC<RowProps> = rowProps => {
   return (
     <tr>
-      {rowProps.owners.map((owner, index) => (
-        <Cell owner={owner} onClick={() => {}} />
+      {rowProps.row.map((cell, index) => (
+        <Cell cell={cell} onClick={() => {}} indexRow={rowProps.indexRow} 
+          indexCollumn={index} />
       ))}
     </tr>
   );

@@ -1,32 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import GameHtml, { GameProps } from "./Game"
-import Game from "./Game";
+import Game, { GameProps } from "./Game";
 
-/*type AppProps = {
-  name: string;
-  entier: number;
-};*/
 
-type Cell = 1 | 2 | null
-type Owner = Cell
-type Winner = Cell
-type Row = Cell[]
-type Line = Row
-type Game = Row[]
-​
-const initialGame: Game = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-]
+type AppProps = {
+  onClick: GameProps["onClick"];
+  appGame: GameProps["game"];
+};
 
-const App: React.FC = () => {
-  return (
+const App: React.FC<AppProps> = appProps => {
+    return (
     <div className="App">
       <header className="App-header">
-        <Game rows={initialGame} onClick={() => {}}></Game>
+        <Game game={appProps.appGame} onClick={() => {}}></Game>
       </header>
     </div>
   );
