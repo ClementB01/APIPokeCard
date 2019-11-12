@@ -3,18 +3,18 @@ import "./App.css";
 import Game, { GameProps } from "./Game";
 
 
+type Winner = 1 | 2 | null;
+
 type AppProps = {
   onClick: GameProps["onClick"];
   appGame: GameProps["game"];
+  winner: Winner;
 };
 
 const App: React.FC<AppProps> = appProps => {
     return (
-    <div className="App">
-      <header className="App-header">
-        <Game game={appProps.appGame} onClick={() => {}}></Game>
-      </header>
-    </div>
+        <Game game={appProps.appGame} onClick={() => {}} 
+          winner={appProps.winner}></Game>
   );
 };
 
