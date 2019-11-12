@@ -45,7 +45,7 @@ const getWinner = (game: Game): Winner => {
 const play = (game: Game, x: number, y: number) => {
     if (!getWinner(game) && !game[x][y]) {
     game[x][y] = isFirstPlayerTurn(game) ? 1 : 2;
-    ReactDOM.render(createGame(initialGame), document.getElementById('root'));
+    ReactDOM.render(createGame(game), document.getElementById('root'));
     }
 };
 
