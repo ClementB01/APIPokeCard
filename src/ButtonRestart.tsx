@@ -1,14 +1,12 @@
 import React from "react";
-import { constTicTacToes } from "./index"
-
 
 export type ButtonRestartProps = {
-  onClick: () => void;
+  onButtonClick: () => void;
 };
 
-const ButtonRestart: React.FC<ButtonRestartProps> = buttonRestartProps => {
+const ButtonRestart: React.FC<ButtonRestartProps> = ({onButtonClick}) => {
     return (
-    <button onClick={() => constTicTacToes.reinitGame(constTicTacToes.initialGame)} children="Reset"></button>
+    <button onClick={() => onButtonClick()} children="Reset"></button>
   );
 };
 

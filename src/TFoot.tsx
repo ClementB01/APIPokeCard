@@ -1,6 +1,6 @@
 import * as React from "react";
 
-type Winner = 1 | 2 | null;
+import { Winner } from './game_logique'
 
 export type TFootProps = {
     winner: Winner

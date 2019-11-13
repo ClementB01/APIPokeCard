@@ -1,19 +1,16 @@
 import * as React from "react";
-import { constTicTacToes } from "./index"
 
-type Cell = 1 | 2 | null
+import { Owner } from './game_logique'
 
 export type CellProps = {
+  owner: Owner;
   onClick: () => void;
-  cell: Cell;
-  indexRow: number;
-  indexCollumn: number;
 };
 
-const Cell: React.FC<CellProps> = cellProps => {
+const Cell: React.FC<CellProps> = ({owner, onClick}) => {
   return (
-    <td className="cell" onClick={() => constTicTacToes.play(constTicTacToes.initialGame, cellProps.indexRow, cellProps.indexCollumn)}>
-      {cellProps.cell === 1 ? "X" : cellProps.cell === 2 ? "O" : " "}
+    <td className="cell" onClick={onClick}>
+      {owner === 1 ? "X" : owner === 2 ? "O" : " "}
     </td>
   );
 };

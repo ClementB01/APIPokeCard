@@ -1,25 +1,29 @@
-import * as React from "react";
-import Row, { RowProps } from "./Row";
+import React from "react";
+import "./Game.css";
+import Row from "./Row";
 import TFoot from "./TFoot";
+import ButtonRestart from './ButtonRestart'
 
-type Winner = 1 | 2 | null;
+import { getWinner, initialGame, play} from './game_logique'
 
-export type GameProps = {
-  onClick: RowProps["onClick"];
-  game: RowProps["row"][];
-  winner: Winner;
-};
+type GameProps = {};
 
-const Game: React.FC<GameProps> = gameProps => {
+const Game: React.FC<GameProps> = () => {
+  const [game, setGame] = React.useState(initialGame);
   return (
-    <table>
-      <tbody>
-        {gameProps.game.map((row, index) => (
-          <Row row={row} onClick={() => {}} indexRow={index}/>
-        ))}
-      </tbody>
-      <TFoot winner={gameProps.winner}/>
-    </table>
+    <div className="App">
+      <header className="App-header">
+        <table>
+          <tbody>
+            {game.map((row, index) => (
+              <Row key={index} row={row} onCellClick={(y: number) => setGame(play(game,index, y))}/>
+            ))}
+          </tbody>
+          <TFoot winner={getWinner(game)}/>
+        </table>
+        <ButtonRestart onButtonClick={() => setGame(initialGame)}/>
+      </header>
+    </div> 
   );
 };
 
