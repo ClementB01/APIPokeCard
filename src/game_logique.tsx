@@ -11,6 +11,8 @@ export const initialGame: Game = [
     [null, null, null],
 ];
 
+//export let historique: [Game] = [initialGame];
+
 export const isFirstPlayerTurn = (game: Game): boolean => {
     const emptyCells = game
         .reduce<Cell[]>((acc, row) => acc.concat(row), [])
@@ -33,7 +35,7 @@ export const getWinner = (game: Game): Winner => {
     return lines.reduce<Owner>((winner, line) => winner || getOwner(line), null);
 };
 
-export const play = (game: Game, x: number, y: number) =>
+/*export const oldplay = (game: Game, x: number, y: number) =>
   getWinner(game) || game[x][y]
     ? game
     : game.map((row, currentX) =>
@@ -42,4 +44,19 @@ export const play = (game: Game, x: number, y: number) =>
           : row.map((cell, currentY) =>
               currentY === y ? (isFirstPlayerTurn(game) ? 1 : 2) : cell
             )
-      );
+      );*/
+
+export const play = (game: Game, x: number, y: number) => {
+    if (getWinner(game) || game[x][y]){
+        return game;
+    }else{
+        const newGame: Game = game.map((row, currentX) =>
+            currentX !== x
+            ? row
+            : row.map((cell, currentY) =>
+                currentY === y ? (isFirstPlayerTurn(game) ? 1 : 2) : cell
+                )
+        );
+        return newGame;
+    }     
+}

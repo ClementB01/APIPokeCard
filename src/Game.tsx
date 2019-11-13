@@ -4,12 +4,14 @@ import Row from "./Row";
 import TFoot from "./TFoot";
 import ButtonRestart from './ButtonRestart'
 
-import { getWinner, initialGame, play} from './game_logique'
+import { getWinner, initialGame, play, Game} from './game_logique'
+import ButtonUndo from "./ButtonUndo";
 
 type GameProps = {};
 
-const Game: React.FC<GameProps> = () => {
+const GameFinal: React.FC<GameProps> = () => {
   const [game, setGame] = React.useState(initialGame);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,10 +23,14 @@ const Game: React.FC<GameProps> = () => {
           </tbody>
           <TFoot winner={getWinner(game)}/>
         </table>
-        <ButtonRestart onButtonClick={() => setGame(initialGame)}/>
+        <span>
+         
+          <ButtonRestart onButtonClick={() => setGame(initialGame)}/>
+        </span>
       </header>
     </div> 
   );
 };
 
-export default Game;
+export default GameFinal;
+//<ButtonUndo onButtonClick={() => setGame(historique[historique.length - 1])}/>

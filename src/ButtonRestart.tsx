@@ -6,7 +6,7 @@ export type ButtonRestartProps = {
 
 const ButtonRestart: React.FC<ButtonRestartProps> = ({onButtonClick}) => {
     return (
-    <button onClick={() => onButtonClick()} children="Reset"></button>
+    <button onClick={() => onButtonClick()}>Reset</button>
   );
 };
 
